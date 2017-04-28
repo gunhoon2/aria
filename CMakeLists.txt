@@ -7,4 +7,5 @@ cmake_minimum_required(VERSION 3.0.2)
 project(aria)
 
 # Add subdirectories to the build.
+add_subdirectory(aria)
 add_subdirectory(examples)
