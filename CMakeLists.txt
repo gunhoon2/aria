@@ -11,6 +11,10 @@ include("cmake/config.cmake")
 # Include cmake module to download and configure Google Test.
 include("cmake/googletest.cmake")
 
+# Enable testing for current directory and below
+# to be run by 'make test' or 'ctest'.
+enable_testing()
+
 # Add subdirectories to the build.
 add_subdirectory(aria)
 add_subdirectory(examples)
