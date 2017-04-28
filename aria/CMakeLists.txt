@@ -31,3 +31,6 @@ add_library(${ARIA_TARGET} STATIC ${ARIA_SOURCES})
 
 # include directories
 target_include_directories(${ARIA_TARGET} PUBLIC ${PROJECT_SOURCE_DIR})
+
+# compile options
+target_compile_options(${ARIA_TARGET} PRIVATE ${COMMON_COMPILE_OPTIONS})
