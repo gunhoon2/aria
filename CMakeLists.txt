@@ -8,6 +8,8 @@ project(aria)
 
 # Include config.cmake for common configurations
 include("cmake/config.cmake")
+# Include cmake module to download and configure Google Test.
+include("cmake/googletest.cmake")
 
 # Add subdirectories to the build.
 add_subdirectory(aria)
