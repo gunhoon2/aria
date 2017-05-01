@@ -1,0 +1,42 @@
+language: cpp
+
+matrix:
+  include:
+  # 1. Linux gcc Build
+  - os: linux
+    dist: trusty
+    sudo: required
+    compiler: gcc
+    env: BUILD_TYPE=Debug
+
+  # 2. Linux clang Build
+  - os: linux
+    dist: trusty
+    sudo: required
+    compiler: clang
+    env: BUILD_TYPE=Debug
+
+  # 3. OS X default image
+  - os: osx
+    compiler: clang
+    env: BUILD_TYPE=Debug
+
+  # 4. OS X xcode 8.3 image
+  - os: osx
+    osx_image: xcode8.3
+    compiler: clang
+    env: BUILD_TYPE=Debug
+
+branches:
+  only:
+  - master
+
+before_script:
+- cmake --version
+
+script:
+- mkdir build
+- cd build
+- cmake -D CMAKE_BUILD_TYPE=$BUILD_TYPE ..
+- cmake --build .
+- ctest
