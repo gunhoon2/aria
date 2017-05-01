@@ -1,0 +1,83 @@
+# Notes:
+#   - Minimal appveyor.yml file is an empty file. All sections are optional.
+#   - Indent each level of configuration with 2 spaces. Do not use tabs!
+#   - All section names are case-sensitive.
+#   - Section names should be unique on each level.
+
+#---------------------------------#
+#      general configuration      #
+#---------------------------------#
+
+# version format
+version: 1.0.{build}
+
+# you can use {branch} name in version format too
+# version: 1.0.{build}-{branch}
+
+# branches to build
+branches:
+  only:
+  - master
+
+#---------------------------------#
+#    environment configuration    #
+#---------------------------------#
+
+# Build worker image (VM template)
+image:
+- Visual Studio 2015
+#- Visual Studio 2017
+
+#---------------------------------#
+#       build configuration       #
+#---------------------------------#
+
+# build platform, i.e. x86, x64, Any CPU. This setting is optional.
+platform:
+- Win32
+- x64
+
+# build Configuration, i.e. Debug, Release, etc.
+configuration:
+- Debug
+- Release
+
+# scripts to run before build
+before_build:
+- ps: |
+    $generator = switch ($env:APPVEYOR_BUILD_WORKER_IMAGE)
+    {
+      "Visual Studio 2015" {"Visual Studio 14 2015"}
+      "Visual Studio 2017" {"Visual Studio 15 2017"}
+    }
+    if ($env:PLATFORM -eq "x64")
+    {
+      $generator = "$generator Win64"
+    }
+
+    Write-Output "Generator: $generator"
+    Write-Output "Platform: $env:PLATFORM"
+    Write-Output "Configuration: $env:CONFIGURATION"
+
+# to run your custom scripts instead of automatic MSBuild
+build_script:
+- ps: |
+    md build
+    cd build
+    cmake --version
+    cmake -G "$generator" ..
+    cmake --build . --config $env:CONFIGURATION
+
+#---------------------------------#
+#       tests configuration       #
+#---------------------------------#
+
+# scripts to run before tests
+before_test:
+- ps: |
+    Write-Output "Configuration: $env:CONFIGURATION"
+
+# to run your custom scripts instead of automatic tests
+test_script:
+- ps: |
+    ctest -C $env:CONFIGURATION
