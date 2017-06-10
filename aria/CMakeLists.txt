@@ -4,6 +4,19 @@
 # Source list
 ######################################################################
 
+# base sources
+set(ARIA_BASE_SOURCES
+    base/logging.cc
+    base/logging.h
+    )
+source_group(base FILES ${ARIA_BASE_SOURCES})
+
+set(ARIA_BASE_TESTS
+    base/logging_test.cc
+    )
+source_group(base FILES ${ARIA_BASE_TESTS})
+
+
 # examples sources
 set(ARIA_EXAMPLES_SOURCES
     examples/bar.cc
@@ -25,6 +38,7 @@ source_group(examples FILES ${ARIA_EXAMPLES_TESTS})
 
 # all sources
 set(ARIA_SOURCES
+    ${ARIA_BASE_SOURCES}
     ${ARIA_EXAMPLES_SOURCES}
     )
 
@@ -47,6 +61,7 @@ target_compile_options(${ARIA_TARGET} PRIVATE ${COMMON_COMPILE_OPTIONS})
 
 # all sources
 set(TESTS_SOURCES
+    ${ARIA_BASE_TESTS}
     ${ARIA_EXAMPLES_TESTS}
     tests/test_main.cc
     )
