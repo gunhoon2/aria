@@ -2,6 +2,8 @@
 
 #include "aria/base/thread/thread.h"
 
+#if defined(ARIA_THREAD_PLATFORM_POSIX)
+
 namespace aria {
 
 namespace {
@@ -30,3 +32,5 @@ void Thread::Join() {
 }
 
 }  // namespace aria
+
+#endif  // defined(ARIA_THREAD_PLATFORM_POSIX)

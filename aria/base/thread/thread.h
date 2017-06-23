@@ -5,12 +5,6 @@
 
 #include "aria/base/thread/platform.h"
 
-#if defined(ARIA_THREAD_PLATFORM_POSIX)
-#include <pthread.h>
-#elif defined(ARIA_THREAD_PLATFORM_WIN)
-#include <windows.h>
-#endif
-
 namespace aria {
 
 class Thread {
@@ -24,11 +18,7 @@ class Thread {
   virtual void Run() = 0;
 
  private:
-#if defined(ARIA_THREAD_PLATFORM_POSIX)
-  pthread_t thread_handle_;
-#elif defined(ARIA_THREAD_PLATFORM_WIN)
-  HANDLE thread_handle_;
-#endif
+  ThreadHandle thread_handle_;
 
   Thread(const Thread&) = delete;
   Thread& operator=(const Thread&) = delete;

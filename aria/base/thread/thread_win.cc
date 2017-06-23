@@ -2,6 +2,8 @@
 
 #include "aria/base/thread/thread.h"
 
+#if defined(ARIA_THREAD_PLATFORM_WIN)
+
 #include <process.h>
 
 namespace aria {
@@ -35,3 +37,5 @@ void Thread::Join() {
 }
 
 }  // namespace aria
+
+#endif  // defined(ARIA_THREAD_PLATFORM_WIN)
