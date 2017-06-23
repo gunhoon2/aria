@@ -8,6 +8,7 @@
 set(ARIA_BASE_SOURCES
     base/logging.cc
     base/logging.h
+    base/platform.h
     )
 source_group(base FILES ${ARIA_BASE_SOURCES})
 
@@ -15,6 +16,36 @@ set(ARIA_BASE_TESTS
     base/logging_test.cc
     )
 source_group(base FILES ${ARIA_BASE_TESTS})
+
+
+# base/thread sources
+set(ARIA_BASE_THREAD_COMMON_SOURCES
+    base/thread/platform.h
+    base/thread/thread.h
+    )
+set(ARIA_BASE_THREAD_POSIX_SOURCES
+    base/thread/thread_posix.cc
+    )
+set(ARIA_BASE_THREAD_WINDOWS_SOURCES
+    base/thread/thread_win.cc
+    )
+if(OS_POSIX)
+  set(ARIA_BASE_THREAD_SOURCES
+      ${ARIA_BASE_THREAD_COMMON_SOURCES}
+      ${ARIA_BASE_THREAD_POSIX_SOURCES}
+      )
+elseif(OS_WINDOWS)
+  set(ARIA_BASE_THREAD_SOURCES
+      ${ARIA_BASE_THREAD_COMMON_SOURCES}
+      ${ARIA_BASE_THREAD_WINDOWS_SOURCES}
+      )
+endif()
+source_group(base\\\\thread FILES ${ARIA_BASE_THREAD_SOURCES})
+
+set(ARIA_BASE_THREAD_TESTS
+    base/thread/thread_test.cc
+    )
+source_group(base\\\\thread FILES ${ARIA_BASE_THREAD_TESTS})
 
 
 # examples sources
@@ -39,6 +70,7 @@ source_group(examples FILES ${ARIA_EXAMPLES_TESTS})
 # all sources
 set(ARIA_SOURCES
     ${ARIA_BASE_SOURCES}
+    ${ARIA_BASE_THREAD_SOURCES}
     ${ARIA_EXAMPLES_SOURCES}
     )
 
@@ -62,6 +94,7 @@ target_compile_options(${ARIA_TARGET} PRIVATE ${COMMON_COMPILE_OPTIONS})
 # all sources
 set(TESTS_SOURCES
     ${ARIA_BASE_TESTS}
+    ${ARIA_BASE_THREAD_TESTS}
     ${ARIA_EXAMPLES_TESTS}
     tests/test_main.cc
     )

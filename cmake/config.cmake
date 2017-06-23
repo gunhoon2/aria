@@ -35,6 +35,7 @@ if(OS_LINUX)
       -std=c++11                      # Use the C++11 language standard
       -Wall                           # Enable all warnings
       -Werror                         # Treat warnings as errors
+      -pthread                        # Use the pthread library
       )
   list(APPEND COMMON_COMPILE_OPTIONS_DEBUG
       -O0                             # Disable optimizations
@@ -48,6 +49,7 @@ elseif(OS_MACOSX)
       -std=c++11                      # Use the C++11 language standard
       -Wall                           # Enable all warnings
       -Werror                         # Treat warnings as errors
+      -pthread                        # Use the pthread library
       )
   list(APPEND COMMON_COMPILE_OPTIONS_DEBUG
       -O0                             # Disable optimizations
