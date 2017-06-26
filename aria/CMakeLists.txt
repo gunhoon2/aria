@@ -27,6 +27,9 @@ set(ARIA_BASE_THREAD_SOURCES
     base/thread/mutex_posix.cc
     base/thread/mutex_win.cc
     base/thread/platform.h
+    base/thread/recursive_mutex.h
+    base/thread/recursive_mutex_posix.cc
+    base/thread/recursive_mutex_win.cc
     base/thread/thread.h
     base/thread/thread_posix.cc
     base/thread/thread_win.cc
