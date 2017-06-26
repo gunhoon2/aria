@@ -3,7 +3,9 @@
 [![Build Status](https://travis-ci.org/gunhoon/aria.svg?branch=master)](https://travis-ci.org/gunhoon/aria)
 [![Build status](https://ci.appveyor.com/api/projects/status/f8ml9o3x340fo4hb/branch/master?svg=true)](https://ci.appveyor.com/project/gunhoon/aria/branch/master)
 
-Welcome to **Aria library**!
+Welcome to **Aria library**, C++ cross-platform core library!
+
+**Aria** is a general purpose cross-platform library written in the C++ programming language for personal learning.
 
 ## How to build ##
 
