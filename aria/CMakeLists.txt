@@ -20,6 +20,9 @@ source_group(base FILES ${ARIA_BASE_TESTS})
 
 # base/thread sources
 set(ARIA_BASE_THREAD_SOURCES
+    base/thread/condition_variable.h
+    base/thread/condition_variable_posix.cc
+    base/thread/condition_variable_win.cc
     base/thread/mutex.h
     base/thread/mutex_posix.cc
     base/thread/mutex_win.cc

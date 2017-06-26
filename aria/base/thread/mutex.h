@@ -17,6 +17,8 @@ class Mutex {
   void Unlock();
 
  private:
+  friend class ConditionVariable;
+
 #if defined(ARIA_THREAD_PLATFORM_POSIX)
   pthread_mutex_t mutex_;
 #elif defined(ARIA_THREAD_PLATFORM_WIN)
