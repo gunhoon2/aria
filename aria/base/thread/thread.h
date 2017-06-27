@@ -18,7 +18,11 @@ class Thread {
   virtual void Run() = 0;
 
  private:
-  ThreadHandle thread_handle_;
+#if defined(ARIA_THREAD_PLATFORM_POSIX)
+  pthread_t thread_handle_;
+#elif defined(ARIA_THREAD_PLATFORM_WIN)
+  HANDLE thread_handle_;
+#endif
 
   Thread(const Thread&) = delete;
   Thread& operator=(const Thread&) = delete;

@@ -4,6 +4,8 @@
 
 #if defined(ARIA_THREAD_PLATFORM_POSIX)
 
+#include "aria/base/logging.h"
+
 namespace aria {
 
 namespace {
@@ -24,11 +26,13 @@ Thread::~Thread() {
 }
 
 void Thread::Start() {
-  pthread_create(&thread_handle_, nullptr, ThreadFunc, this);
+  int rv = pthread_create(&thread_handle_, nullptr, ThreadFunc, this);
+  DCHECK(rv == 0);
 }
 
 void Thread::Join() {
-  pthread_join(thread_handle_, nullptr);
+  int rv = pthread_join(thread_handle_, nullptr);
+  DCHECK(rv == 0);
 }
 
 }  // namespace aria

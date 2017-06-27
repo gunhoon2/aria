@@ -4,28 +4,34 @@
 
 #if defined(ARIA_THREAD_PLATFORM_POSIX)
 
+#include "aria/base/logging.h"
 #include "aria/base/thread/mutex.h"
 
 namespace aria {
 
 ConditionVariable::ConditionVariable() {
-  pthread_cond_init(&cv_, nullptr);
+  int rv = pthread_cond_init(&cv_, nullptr);
+  DCHECK(rv == 0);
 }
 
 ConditionVariable::~ConditionVariable() {
-  pthread_cond_destroy(&cv_);
+  int rv = pthread_cond_destroy(&cv_);
+  DCHECK(rv == 0);
 }
 
 void ConditionVariable::NotifyOne() {
-  pthread_cond_signal(&cv_);
+  int rv = pthread_cond_signal(&cv_);
+  DCHECK(rv == 0);
 }
 
 void ConditionVariable::NotifyAll() {
-  pthread_cond_broadcast(&cv_);
+  int rv = pthread_cond_broadcast(&cv_);
+  DCHECK(rv == 0);
 }
 
 void ConditionVariable::Wait(Mutex* mutex) {
-  pthread_cond_wait(&cv_, &mutex->mutex_);
+  int rv = pthread_cond_wait(&cv_, &mutex->mutex_);
+  DCHECK(rv == 0);
 }
 
 }  // namespace aria
