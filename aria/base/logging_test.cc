@@ -15,12 +15,12 @@ TEST(LoggingTest, Logging) {
   LOG_IF(INFO, false) << "LOG_IF message when condition is false.";
 
   CHECK(true);
-  //CHECK(false);
+  // CHECK(false);
   DCHECK(true);
-  //DCHECK(false);
+  // DCHECK(false);
 
   LOG_ASSERT(true);
-  //LOG_ASSERT(false);
+  // LOG_ASSERT(false);
 }
 
 }  // namespace aria

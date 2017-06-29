@@ -59,7 +59,13 @@ class LogMessageVoidify {
 #define _ARIA_LOG_FATAL \
   aria::logging::LogMessage(__FILE__, __LINE__, aria::logging::LOG_FATAL)
 
-// TODO: should implement
+#if defined(OS_WIN)
+// wingdi.h defines ERROR to be 0. When we call LOG(ERROR), it gets
+// substituted with 0, and it expands to _ARIA_LOG_0.
+#define _ARIA_LOG_0 _ARIA_LOG_ERROR
+#endif
+
+// TODO(gunhoon): should implement
 #define LOG_IS_ON(severity) (true)
 
 // Macro which call the stream() member function of LogMessage

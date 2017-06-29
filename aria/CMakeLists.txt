@@ -23,6 +23,9 @@ set(ARIA_BASE_THREAD_SOURCES
     base/thread/condition_variable.h
     base/thread/condition_variable_posix.cc
     base/thread/condition_variable_win.cc
+    base/thread/event.cc
+    base/thread/event.h
+    base/thread/event_win.cc
     base/thread/lock.h
     base/thread/mutex.h
     base/thread/mutex_posix.cc
