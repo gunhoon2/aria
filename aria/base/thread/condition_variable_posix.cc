@@ -56,7 +56,7 @@ void ConditionVariable::Wait(Mutex* mutex) {
   DCHECK(rv == 0);
 }
 
-void ConditionVariable::TimedWait(Mutex* mutex, long timeout_ms) {
+bool ConditionVariable::TimedWait(Mutex* mutex, long timeout_ms) {
   struct timespec relative_time;
   relative_time.tv_sec = timeout_ms / 1000;
   relative_time.tv_nsec = (timeout_ms % 1000) * 1000000;
@@ -78,6 +78,8 @@ void ConditionVariable::TimedWait(Mutex* mutex, long timeout_ms) {
 
   int rv = pthread_cond_timedwait(&cv_, &mutex->mutex_, &absolute_time);
   DCHECK(rv == 0 || rv == ETIMEDOUT);
+
+  return rv == 0;
 }
 
 }  // namespace aria

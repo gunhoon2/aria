@@ -27,10 +27,12 @@ void ConditionVariable::Wait(Mutex* mutex) {
   SleepConditionVariableSRW(&cv_, &mutex->mutex_, INFINITE, 0);
 }
 
-void ConditionVariable::TimedWait(Mutex* mutex, long timeout_ms) {
+bool ConditionVariable::TimedWait(Mutex* mutex, long timeout_ms) {
   if (!SleepConditionVariableSRW(&cv_, &mutex->mutex_, timeout_ms, 0)) {
     DCHECK(static_cast<DWORD>(ERROR_TIMEOUT) == GetLastError());
+    return false;
   }
+  return true;
 }
 
 }  // namespace aria
