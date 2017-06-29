@@ -48,9 +48,18 @@ void Event::Wait() {
 bool Event::TimedWait(int timeout_ms) {
   CHECK(timeout_ms >= 0);
 
-  // TODO(gunhoon): should implement
-  Wait();
-  return true;
+  bool no_timeout = true;
+  AutoLock lock(mutex_);
+
+  while (!signaled_) {
+    no_timeout = cv_.TimedWait(&mutex_, timeout_ms);
+    if (!no_timeout)
+      break;
+  }
+  if (!manual_reset_ && no_timeout)
+    signaled_ = false;
+
+  return no_timeout;
 }
 
 }  // namespace aria
