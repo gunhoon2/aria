@@ -4,6 +4,7 @@
 
 #if defined(ARIA_THREAD_PLATFORM_WIN)
 
+#include "aria/base/logging.h"
 #include "aria/base/thread/mutex.h"
 
 namespace aria {
@@ -24,6 +25,12 @@ void ConditionVariable::NotifyAll() {
 
 void ConditionVariable::Wait(Mutex* mutex) {
   SleepConditionVariableSRW(&cv_, &mutex->mutex_, INFINITE, 0);
+}
+
+void ConditionVariable::TimedWait(Mutex* mutex, long timeout_ms) {
+  if (!SleepConditionVariableSRW(&cv_, &mutex->mutex_, timeout_ms, 0)) {
+    DCHECK(static_cast<DWORD>(ERROR_TIMEOUT) == GetLastError());
+  }
 }
 
 }  // namespace aria

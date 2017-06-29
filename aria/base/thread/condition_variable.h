@@ -17,6 +17,7 @@ class ConditionVariable {
   void NotifyOne();
   void NotifyAll();
   void Wait(Mutex* mutex);
+  void TimedWait(Mutex* mutex, long timeout_ms);
 
  private:
 #if defined(ARIA_THREAD_PLATFORM_POSIX)
