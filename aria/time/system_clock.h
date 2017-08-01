@@ -1,9 +1,9 @@
 // Copyright (c) 2017, Gunhoon Lee (gunhoon@gmail.com)
 
-#ifndef ARIA_BASE_TIME_SYSTEM_CLOCK_H_
-#define ARIA_BASE_TIME_SYSTEM_CLOCK_H_
+#ifndef ARIA_TIME_SYSTEM_CLOCK_H_
+#define ARIA_TIME_SYSTEM_CLOCK_H_
 
-#include "aria/base/time/time.h"
+#include "aria/time/time.h"
 
 namespace aria {
 
@@ -15,4 +15,4 @@ class SystemClock {
 
 }  // namespace aria
 
-#endif  // ARIA_BASE_TIME_SYSTEM_CLOCK_H_
+#endif  // ARIA_TIME_SYSTEM_CLOCK_H_
