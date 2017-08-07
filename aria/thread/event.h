@@ -1,13 +1,13 @@
 // Copyright (c) 2017, Gunhoon Lee (gunhoon@gmail.com)
 
-#ifndef ARIA_BASE_THREAD_EVENT_H_
-#define ARIA_BASE_THREAD_EVENT_H_
+#ifndef ARIA_THREAD_EVENT_H_
+#define ARIA_THREAD_EVENT_H_
 
-#include "aria/base/thread/platform.h"
+#include "aria/thread/platform.h"
 
 #if !defined(ARIA_THREAD_PLATFORM_WIN)
-#include "aria/base/thread/condition_variable.h"
-#include "aria/base/thread/lock.h"
+#include "aria/thread/condition_variable.h"
+#include "aria/thread/lock.h"
 #endif  // !defined(ARIA_THREAD_PLATFORM_WIN)
 
 namespace aria {
@@ -47,4 +47,4 @@ class Event {
 
 }  // namespace aria
 
-#endif  // ARIA_BASE_THREAD_EVENT_H_
+#endif  // ARIA_THREAD_EVENT_H_

@@ -1,9 +1,9 @@
 // Copyright (c) 2017, Gunhoon Lee (gunhoon@gmail.com)
 
-#ifndef ARIA_BASE_THREAD_MUTEX_H_
-#define ARIA_BASE_THREAD_MUTEX_H_
+#ifndef ARIA_THREAD_MUTEX_H_
+#define ARIA_THREAD_MUTEX_H_
 
-#include "aria/base/thread/platform.h"
+#include "aria/thread/platform.h"
 
 namespace aria {
 
@@ -31,4 +31,4 @@ class Mutex {
 
 }  // namespace aria
 
-#endif  // ARIA_BASE_THREAD_MUTEX_H_
+#endif  // ARIA_THREAD_MUTEX_H_

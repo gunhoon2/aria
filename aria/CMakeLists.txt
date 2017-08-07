@@ -18,32 +18,32 @@ set(ARIA_BASE_TESTS
 source_group(base FILES ${ARIA_BASE_TESTS})
 
 
-# base/thread sources
-set(ARIA_BASE_THREAD_SOURCES
-    base/thread/condition_variable.h
-    base/thread/condition_variable_posix.cc
-    base/thread/condition_variable_win.cc
-    base/thread/event.cc
-    base/thread/event.h
-    base/thread/event_win.cc
-    base/thread/lock.h
-    base/thread/mutex.h
-    base/thread/mutex_posix.cc
-    base/thread/mutex_win.cc
-    base/thread/platform.h
-    base/thread/recursive_mutex.h
-    base/thread/recursive_mutex_posix.cc
-    base/thread/recursive_mutex_win.cc
-    base/thread/thread.h
-    base/thread/thread_posix.cc
-    base/thread/thread_win.cc
+# thread sources
+set(ARIA_THREAD_SOURCES
+    thread/condition_variable.h
+    thread/condition_variable_posix.cc
+    thread/condition_variable_win.cc
+    thread/event.cc
+    thread/event.h
+    thread/event_win.cc
+    thread/lock.h
+    thread/mutex.h
+    thread/mutex_posix.cc
+    thread/mutex_win.cc
+    thread/platform.h
+    thread/recursive_mutex.h
+    thread/recursive_mutex_posix.cc
+    thread/recursive_mutex_win.cc
+    thread/thread.h
+    thread/thread_posix.cc
+    thread/thread_win.cc
     )
-source_group(base\\\\thread FILES ${ARIA_BASE_THREAD_SOURCES})
+source_group(thread FILES ${ARIA_THREAD_SOURCES})
 
-set(ARIA_BASE_THREAD_TESTS
-    base/thread/thread_test.cc
+set(ARIA_THREAD_TESTS
+    thread/thread_test.cc
     )
-source_group(base\\\\thread FILES ${ARIA_BASE_THREAD_TESTS})
+source_group(thread FILES ${ARIA_THREAD_TESTS})
 
 
 # examples sources
@@ -68,7 +68,7 @@ source_group(examples FILES ${ARIA_EXAMPLES_TESTS})
 # all sources
 set(ARIA_SOURCES
     ${ARIA_BASE_SOURCES}
-    ${ARIA_BASE_THREAD_SOURCES}
+    ${ARIA_THREAD_SOURCES}
     ${ARIA_EXAMPLES_SOURCES}
     )
 
@@ -92,7 +92,7 @@ target_compile_options(${ARIA_TARGET} PRIVATE ${COMMON_COMPILE_OPTIONS})
 # all sources
 set(TESTS_SOURCES
     ${ARIA_BASE_TESTS}
-    ${ARIA_BASE_THREAD_TESTS}
+    ${ARIA_THREAD_TESTS}
     ${ARIA_EXAMPLES_TESTS}
     tests/test_main.cc
     )

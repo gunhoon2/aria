@@ -1,9 +1,9 @@
 // Copyright (c) 2017, Gunhoon Lee (gunhoon@gmail.com)
 
-#ifndef ARIA_BASE_THREAD_LOCK_H_
-#define ARIA_BASE_THREAD_LOCK_H_
+#ifndef ARIA_THREAD_LOCK_H_
+#define ARIA_THREAD_LOCK_H_
 
-#include "aria/base/thread/mutex.h"
+#include "aria/thread/mutex.h"
 
 namespace aria {
 
@@ -29,4 +29,4 @@ class AutoLock {
 
 }  // namespace aria
 
-#endif  // ARIA_BASE_THREAD_LOCK_H_
+#endif  // ARIA_THREAD_LOCK_H_

@@ -1,6 +1,6 @@
 // Copyright (c) 2017, Gunhoon Lee (gunhoon@gmail.com)
 
-#include "aria/base/thread/recursive_mutex.h"
+#include "aria/thread/recursive_mutex.h"
 
 #if defined(ARIA_THREAD_PLATFORM_WIN)
 

@@ -1,6 +1,6 @@
 // Copyright (c) 2017, Gunhoon Lee (gunhoon@gmail.com)
 
-#include "aria/base/thread/condition_variable.h"
+#include "aria/thread/condition_variable.h"
 
 #if defined(ARIA_THREAD_PLATFORM_POSIX)
 
@@ -10,7 +10,7 @@
 #endif
 
 #include "aria/base/logging.h"
-#include "aria/base/thread/mutex.h"
+#include "aria/thread/mutex.h"
 
 namespace aria {
 

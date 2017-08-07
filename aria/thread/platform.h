@@ -1,7 +1,7 @@
 // Copyright (c) 2017, Gunhoon Lee (gunhoon@gmail.com)
 
-#ifndef ARIA_BASE_THREAD_PLATFORM_H_
-#define ARIA_BASE_THREAD_PLATFORM_H_
+#ifndef ARIA_THREAD_PLATFORM_H_
+#define ARIA_THREAD_PLATFORM_H_
 
 #include "aria/base/platform.h"
 
@@ -20,4 +20,4 @@
 #elif defined(ARIA_THREAD_PLATFORM_STD)
 #endif
 
-#endif  // ARIA_BASE_THREAD_PLATFORM_H_
+#endif  // ARIA_THREAD_PLATFORM_H_

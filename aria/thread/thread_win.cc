@@ -1,6 +1,6 @@
 // Copyright (c) 2017, Gunhoon Lee (gunhoon@gmail.com)
 
-#include "aria/base/thread/thread.h"
+#include "aria/thread/thread.h"
 
 #if defined(ARIA_THREAD_PLATFORM_WIN)
 

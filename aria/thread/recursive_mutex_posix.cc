@@ -1,6 +1,6 @@
 // Copyright (c) 2017, Gunhoon Lee (gunhoon@gmail.com)
 
-#include "aria/base/thread/mutex.h"
+#include "aria/thread/recursive_mutex.h"
 
 #if defined(ARIA_THREAD_PLATFORM_POSIX)
 
@@ -8,29 +8,39 @@
 
 namespace aria {
 
-Mutex::Mutex() {
-  int rv = pthread_mutex_init(&mutex_, nullptr);
+RecursiveMutex::RecursiveMutex() {
+  pthread_mutexattr_t attr;
+
+  int rv = pthread_mutexattr_init(&attr);
+  DCHECK(rv == 0);
+  rv = pthread_mutexattr_settype(&attr, PTHREAD_MUTEX_RECURSIVE);
+  DCHECK(rv == 0);
+
+  rv = pthread_mutex_init(&mutex_, &attr);
+  DCHECK(rv == 0);
+
+  rv = pthread_mutexattr_destroy(&attr);
   DCHECK(rv == 0);
 }
 
-Mutex::~Mutex() {
+RecursiveMutex::~RecursiveMutex() {
   int rv = pthread_mutex_destroy(&mutex_);
   DCHECK(rv == 0);
 }
 
-void Mutex::Lock() {
+void RecursiveMutex::Lock() {
   int rv = pthread_mutex_lock(&mutex_);
   DCHECK(rv == 0);
 }
 
-bool Mutex::TryLock() {
+bool RecursiveMutex::TryLock() {
   int rv = pthread_mutex_trylock(&mutex_);
   DCHECK(rv == 0 || rv == EBUSY);
 
   return rv == 0;
 }
 
-void Mutex::Unlock() {
+void RecursiveMutex::Unlock() {
   int rv = pthread_mutex_unlock(&mutex_);
   DCHECK(rv == 0);
 }
