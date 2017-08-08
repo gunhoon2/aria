@@ -46,6 +46,18 @@ set(ARIA_THREAD_TESTS
 source_group(thread FILES ${ARIA_THREAD_TESTS})
 
 
+# time sources
+set(ARIA_TIME_SOURCES
+    time/steady_clock.cc
+    time/steady_clock.h
+    time/system_clock.cc
+    time/system_clock.h
+    time/time.h
+    time/time_delta.h
+    )
+source_group(time FILES ${ARIA_TIME_SOURCES})
+
+
 # examples sources
 set(ARIA_EXAMPLES_SOURCES
     examples/bar.cc
@@ -69,6 +81,7 @@ source_group(examples FILES ${ARIA_EXAMPLES_TESTS})
 set(ARIA_SOURCES
     ${ARIA_BASE_SOURCES}
     ${ARIA_THREAD_SOURCES}
+    ${ARIA_TIME_SOURCES}
     ${ARIA_EXAMPLES_SOURCES}
     )
 
